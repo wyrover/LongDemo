@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        dialog.cpp
+        dialog.cpp \
+    halldialog.cpp
 
-HEADERS  += dialog.h
+HEADERS  += dialog.h \
+    halldialog.h
 
 CONFIG += C++11
