@@ -1,5 +1,6 @@
 #include "dialog.h"
 #include<QVBoxLayout>
+#include<halldialog.h>
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -28,10 +29,29 @@ Dialog::Dialog(QWidget *parent)
 
 Dialog::~Dialog()
 {
-
+    if( UserName != nullptr )
+    {
+        delete UserName;
+        UserName = nullptr;
+    }
+    if( PassWord != nullptr )
+    {
+        delete PassWord;
+        PassWord = nullptr;
+    }
+    if( LoginBtn != nullptr )
+    {
+        delete LoginBtn;
+        LoginBtn = nullptr;
+    }
 }
 
 void Dialog::Login()
 {
 
+    HallDialog *HallDlg = new HallDialog;
+    HallDlg->setWindowTitle(tr("Hall"));
+    HallDlg->exec();
+
+//    this->hide();
 }
