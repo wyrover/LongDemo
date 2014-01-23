@@ -14,9 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         dialog.cpp \
-    halldialog.cpp
+    halldialog.cpp \
+    tabconfig.cpp
 
 HEADERS  += dialog.h \
-    halldialog.h
+    halldialog.h \
+    tabconfig.h
 
 CONFIG += C++11
+
+RC_ICONS = qtdemo.ico

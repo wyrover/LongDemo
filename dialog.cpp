@@ -1,6 +1,7 @@
 #include "dialog.h"
 #include<QVBoxLayout>
 #include<halldialog.h>
+#include<QHBoxLayout>
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -13,14 +14,25 @@ Dialog::Dialog(QWidget *parent)
     PassWord->setEchoMode(QLineEdit::Password);
     PassWord->setMaxLength(20);
 
-    LoginBtn = new QPushButton(tr("Login"));
+    LoginBtn = new QPushButton(tr("登录"));
+
+    RememberPwd = new QCheckBox(tr("记住密码"));
+
+    AutoLogin = new QCheckBox(tr("自动登录"));
 
 
-    connect(LoginBtn,&QPushButton::clicked,this,&Dialog::Login);
+    connect(LoginBtn,&QPushButton::clicked,this,&Dialog::accept);
+    connect(RememberPwd,&QCheckBox::clicked,this,&Dialog::CheckRemPwd);
+    connect(AutoLogin,&QCheckBox::clicked,this,&Dialog::CheckAuto);
+
+    QHBoxLayout *rLayout = new QHBoxLayout;
+    rLayout->addWidget(RememberPwd);
+    rLayout->addWidget(AutoLogin);
 
     QVBoxLayout *mLayout = new QVBoxLayout;
     mLayout->addWidget(UserName);
     mLayout->addWidget(PassWord);
+    mLayout->addLayout(rLayout);
     mLayout->addWidget(LoginBtn);
     setLayout(mLayout);
 
@@ -46,12 +58,20 @@ Dialog::~Dialog()
     }
 }
 
-void Dialog::Login()
+void Dialog::accept()
+{
+    QDialog::accept();
+}
+
+void Dialog::CheckAuto()
+{
+    RememberPwd->setChecked(true);
+}
+
+void Dialog::CheckRemPwd()
 {
 
-    HallDialog *HallDlg = new HallDialog;
-    HallDlg->setWindowTitle(tr("Hall"));
-    HallDlg->exec();
-
-//    this->hide();
 }
+
+
+

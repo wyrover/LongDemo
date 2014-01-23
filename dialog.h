@@ -4,6 +4,8 @@
 #include <QDialog>
 #include<QLineEdit>
 #include<QPushButton>
+#include<QCheckBox>
+#include<QFile>
 
 class Dialog : public QDialog
 {
@@ -13,12 +15,17 @@ public:
     Dialog(QWidget *parent = 0);
     ~Dialog();
 private slots:
-    void Login();
+    void accept();
+    void CheckRemPwd();
+    void CheckAuto();
     
 private:
     QLineEdit *UserName;
     QLineEdit *PassWord;
     QPushButton *LoginBtn;
+    QCheckBox *RememberPwd;
+    QCheckBox *AutoLogin;
+    QFile *Config;
 };
 
 #endif // DIALOG_H
