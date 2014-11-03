@@ -60,6 +60,10 @@ Dialog::~Dialog()
 
 void Dialog::accept()
 {
+    if( RememberPwd->isChecked() )
+    {
+
+    }
     QDialog::accept();
 }
 
