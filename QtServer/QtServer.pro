@@ -13,11 +13,12 @@ TARGET = QtServer
 INCLUDEPATH += ../../boost/
 INCLUDEPATH += ../../openssl/include/
 
-CONFIG   += console boost_system
+CONFIG   += console
 CONFIG   -= app_bundle
 
 TEMPLATE = app
 
+LIBS += -lboost_system
 
 SOURCES += main.cpp
 

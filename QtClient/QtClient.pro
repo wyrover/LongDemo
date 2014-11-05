@@ -15,6 +15,8 @@ INCLUDEPATH += ../../openssl/include/
 
 TEMPLATE = app
 
+#add this .so to use boost::asio
+LIBS += -lboost_system
 
 SOURCES += main.cpp\
         dialog.cpp \

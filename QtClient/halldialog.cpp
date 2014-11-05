@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-//using boost::asio::ip::tcp;
+using boost::asio::ip::tcp;
 
 
 HallDialog::HallDialog(QWidget *parent)
@@ -44,7 +44,7 @@ bool HallDialog::GetNext()
 
 int HallDialog::InitSocket()
 {
-    /*
+
     try
     {
         boost::asio::io_service IO_service;
@@ -73,6 +73,6 @@ int HallDialog::InitSocket()
     {
         std::cerr << e.what() << std::endl;
     }
-*/
+
     return 0;
 }
