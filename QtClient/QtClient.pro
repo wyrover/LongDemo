@@ -4,11 +4,15 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = LongDemo
+TARGET = QtClient
+
+INCLUDEPATH += ../../boost/
+INCLUDEPATH += ../../openssl/include/
+
 TEMPLATE = app
 
 
@@ -41,3 +45,10 @@ HEADERS  += dialog.h \
 CONFIG += C++11
 
 RC_ICONS = qtdemo.ico
+
+OTHER_FILES += \
+    Config.xml \
+    open.jpg \
+    open.ico \
+    qtdemo.ico \
+    LongDemo.pro.user

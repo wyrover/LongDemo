@@ -10,6 +10,7 @@ public:
     ~HallDialog();
 
     bool GetNext();
+    int  InitSocket();
 private:
     bool bNext;//是否成功登录
 };

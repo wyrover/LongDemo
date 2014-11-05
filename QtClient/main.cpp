@@ -6,8 +6,10 @@
 
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
+//写个日志
 fstream g_log;
 
 int main(int argc, char *argv[])
