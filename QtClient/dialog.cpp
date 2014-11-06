@@ -1,8 +1,7 @@
 #include "dialog.h"
-#include<QVBoxLayout>
-#include<halldialog.h>
-#include<QHBoxLayout>
-#include<QTcpSocket>
+#include <QVBoxLayout>
+#include "halldialog.h"
+#include <QHBoxLayout>
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)

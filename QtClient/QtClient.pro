@@ -1,56 +1,43 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-01-17T22:20:33
+# Project created by QtCreator 2014-11-06T15:18:17
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QtClient
-
-INCLUDEPATH += ../../boost/
-INCLUDEPATH += ../../openssl/include/
-
 TEMPLATE = app
 
+INCLUDEPATH += $$PWD/../../boost/
+INCLUDEPATH += $$PWD/../../openssl/include/
+INCLUDEPATH += $$PWD/../../jsoncpp/include/json/
+
 #add this .so to use boost::asio
-LIBS += -lboost_system
+unix:LIBS += -lboost_system
 
 SOURCES += main.cpp\
         dialog.cpp \
     halldialog.cpp \
     tabconfig.cpp \
-    jsoncpp/source/json_reader.cpp \
-    jsoncpp/source/json_value.cpp \
-    jsoncpp/source/json_writer.cpp \
-    tinyxml2/tinyxml2.cpp
+    cgamedata.cpp \
+    sysfunction.cpp \
+    ../../tinyxml2/tinyxml2.cpp
 
 HEADERS  += dialog.h \
     halldialog.h \
     tabconfig.h \
-    jsoncpp/include/assertions.h \
-    jsoncpp/include/autolink.h \
-    jsoncpp/include/config.h \
-    jsoncpp/include/features.h \
-    jsoncpp/include/forwards.h \
-    jsoncpp/include/json.h \
-    jsoncpp/include/reader.h \
-    jsoncpp/include/value.h \
-    jsoncpp/include/version.h \
-    jsoncpp/include/writer.h \
-    jsoncpp/source/json_batchallocator.h \
-    jsoncpp/source/json_tool.h \
-    tinyxml2/tinyxml2.h
+    cgamedata.h \
+    sysfunction.h \
+    ../../tinyxml2/tinyxml2.h
 
 CONFIG += C++11
 
 RC_ICONS = qtdemo.ico
 
-OTHER_FILES += \
-    Config.xml \
-    open.jpg \
-    open.ico \
-    qtdemo.ico \
-    LongDemo.pro.user
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../boost/stage/lib/ -llibboost_system-vc120-mt-1_57
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../boost/stage/lib/ -llibboost_system-vc120-mt-gd-1_57
+
+DEPENDPATH += $$PWD/../../boost/stage

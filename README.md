@@ -9,3 +9,7 @@ INCLUDEPATH += ../../openssl/include/``
 
 然后在代码中就可以使用这两个库了。
 
+用MinGW编译Boost
+1：进入boost目录下面 执行 bootstrap gcc
+
+2: 执行b2"toolset=gcc"  install

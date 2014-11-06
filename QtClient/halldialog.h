@@ -2,6 +2,8 @@
 #define HALLDIALOG_H
 #include<QDialog>
 
+//这个是主界面类
+
 class HallDialog : public QDialog
 {
     Q_OBJECT

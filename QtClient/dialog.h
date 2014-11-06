@@ -7,6 +7,8 @@
 #include<QCheckBox>
 #include<QFile>
 
+//这个是登录窗口类
+
 class Dialog : public QDialog
 {
     Q_OBJECT

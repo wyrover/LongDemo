@@ -1,6 +1,6 @@
 #include "halldialog.h"
-#include"dialog.h"
-#include<QMessageBox>
+#include "dialog.h"
+#include <QMessageBox>
 #include <QApplication>
 #include <QDesktopWidget>
 
