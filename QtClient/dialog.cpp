@@ -3,6 +3,8 @@
 #include "halldialog.h"
 #include <QHBoxLayout>
 
+#include "sysfunction.h"
+
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
 {
@@ -62,7 +64,7 @@ void Dialog::accept()
 {
     if( RememberPwd->isChecked() )
     {
-
+        SysFunction::ShareFunction()->SaveStringData();
     }
     QDialog::accept();
 }

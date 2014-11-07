@@ -11,10 +11,20 @@ SysFunction::SysFunction()
     if( !_File )
     {
         //文件不存在
+        tinyxml2::XMLDocument doc;
+        tinyxml2::XMLDeclaration *declare = new tinyxml2::XMLDeclaration( "1.0", "," );
+        doc.LinkEndChild( declare );
+        doc.LinkEndChild( new tinyxml2::XMLComment("Config") );
+
+        tinyxml2::XMLElement *root = new tinyxml2::XMLElement( "Config" );
+        doc.LinkEndChild( root );
+
+        doc.SaveFile( m_ConfigName.c_str() );
     }
     else
     {
        //文件存在
+        _File.close();
     }
 }
 
@@ -46,7 +56,8 @@ SysFunction* SysFunction::CreateFunction()
 
 void SysFunction::SaveStringData(const char *lpszKey, const char *lpszData)
 {
-
+    tinyxml2::XMLDocument pDoc;
+    pDoc.LoadFile( m_ConfigName.c_str() );
 }
 
 bool SysFunction::LoadStringData(const char *lpszKey, std::string &strReturn)
