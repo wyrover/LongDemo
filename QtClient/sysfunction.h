@@ -9,12 +9,16 @@ class SysFunction
 {
 public:
     static SysFunction *ShareFunction();
-    static SysFunction *CreateFunction();
-    const std::string m_ConfigName = "Config.xml";
-public:   
+
+private:
     SysFunction();
     ~SysFunction();
+    static bool createXMLFile();
+
+    static SysFunction* _DefSysFunction;
+    static std::string m_ConfigName;
 public:
+
     //保存字符串
     void SaveStringData(const char* lpszKey, const char* lpszData);
 

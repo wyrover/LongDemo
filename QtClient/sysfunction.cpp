@@ -4,28 +4,12 @@
 #include <../../tinyxml2/tinyxml2.h>
 #include <fstream>
 
+SysFunction* SysFunction::_DefSysFunction = nullptr;
+std::string SysFunction::m_ConfigName = std::string("Config.xml");
+
 SysFunction::SysFunction()
 {
-    std::fstream _File;
-    _File.open( m_ConfigName.c_str(), std::ios::in );
-    if( !_File )
-    {
-        //文件不存在
-        tinyxml2::XMLDocument doc;
-        tinyxml2::XMLDeclaration *declare = new tinyxml2::XMLDeclaration( "1.0", "," );
-        doc.LinkEndChild( declare );
-        doc.LinkEndChild( new tinyxml2::XMLComment("Config") );
 
-        tinyxml2::XMLElement *root = new tinyxml2::XMLElement( "Config" );
-        doc.LinkEndChild( root );
-
-        doc.SaveFile( m_ConfigName.c_str() );
-    }
-    else
-    {
-       //文件存在
-        _File.close();
-    }
 }
 
 SysFunction::~SysFunction()
@@ -35,23 +19,37 @@ SysFunction::~SysFunction()
 
 SysFunction* SysFunction::ShareFunction()
 {
-    static SysFunction *m_SysFunction = nullptr;
-    if( nullptr == m_SysFunction )
+    if( createXMLFile() )
+        return nullptr;
+    if( nullptr == _DefSysFunction )
     {
-        m_SysFunction = CreateFunction();
+        _DefSysFunction = new SysFunction();
     }
 
-    return m_SysFunction;
+    return _DefSysFunction;
 }
 
-SysFunction* SysFunction::CreateFunction()
+bool SysFunction::createXMLFile()
 {
-    SysFunction* lpSF = new SysFunction;
-    if( lpSF != nullptr) {
-        //lpSF->Reset();
-    }
+    bool bRet = false;
+    std::fstream _File;
+    _File.open( m_ConfigName.c_str(), std::ios::in );
+    if( !_File )
+    {
+        //文件不存在
+        tinyxml2::XMLDocument *pxmlDoc = new tinyxml2::XMLDocument();
+        pxmlDoc->LinkEndChild( pxmlDoc->NewDeclaration() );
+        tinyxml2::XMLElement *RootNode = pxmlDoc->NewElement( "Config" );
+        pxmlDoc->LinkEndChild( RootNode );
 
-    return lpSF;
+        pxmlDoc->SaveFile( m_ConfigName.c_str() );
+    }
+    else
+    {
+       //文件存在
+        _File.close();
+    }
+    return bRet;
 }
 
 void SysFunction::SaveStringData(const char *lpszKey, const char *lpszData)

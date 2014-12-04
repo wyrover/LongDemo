@@ -10,11 +10,11 @@ Dialog::Dialog(QWidget *parent)
 {
 
     UserName = new QLineEdit;
-    UserName->setMaxLength(20);
+    UserName->setMaxLength(60);
 
     PassWord = new QLineEdit;
     PassWord->setEchoMode(QLineEdit::Password);
-    PassWord->setMaxLength(20);
+    PassWord->setMaxLength(30);
 
     LoginBtn = new QPushButton(tr("登录"));
 
@@ -64,7 +64,8 @@ void Dialog::accept()
 {
     if( RememberPwd->isChecked() )
     {
-        SysFunction::ShareFunction()->SaveStringData();
+        //UserName->text();
+        //SysFunction::ShareFunction()->SaveStringData();
     }
     QDialog::accept();
 }
