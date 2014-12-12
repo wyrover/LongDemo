@@ -62,10 +62,11 @@ Dialog::~Dialog()
 
 void Dialog::accept()
 {
-    if( RememberPwd->isChecked() )
+    std::string strName = UserName->text().toStdString();
+    std::string strPwd = PassWord->text().toStdString();
+    if( RememberPwd->isChecked() && strName.empty() && strPwd.empty() )
     {
-        //UserName->text();
-        //SysFunction::ShareFunction()->SaveStringData();
+        SysFunction::ShareFunction()->SaveStringData( "UsrName", strName.c_str() );
     }
     QDialog::accept();
 }

@@ -25,10 +25,11 @@ HallDialog::HallDialog(QWidget *parent)
     //设置窗口的最大最小化
     setWindowFlags( Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint );
 
-    QDesktopWidget *d = QApplication::desktop();
-    QRect screenRect = d->screenGeometry();//获取桌面分辩率
+    QDesktopWidget *desktop = QApplication::desktop();
+    QRect screenRect = desktop->screenGeometry();//获取可用桌面大小
 
-    resize( screenRect.width(),screenRect.height() );
+    setWindowState(Qt::WindowMaximized);//把窗口初始化成最大化
+    //resize( screenRect.width() / 2, screenRect.height() / 2 );
 
     InitSocket();
 }
