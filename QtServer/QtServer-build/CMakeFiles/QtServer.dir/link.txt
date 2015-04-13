@@ -1,0 +1,1 @@
+/bin/c++      CMakeFiles/QtServer.dir/main.cpp.o  -o QtServer -rdynamic 

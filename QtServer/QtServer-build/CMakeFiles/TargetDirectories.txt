@@ -1,0 +1,1 @@
+/home/jackson/code/qt/QtServer/QtServer-build/CMakeFiles/QtServer.dir
