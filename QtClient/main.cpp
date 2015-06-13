@@ -1,11 +1,16 @@
 #include "mainwindow.h"
 #include <QApplication>
 
+
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    QApplication app(argc, argv);
 
-    return a.exec();
+    MainWindow HallWin;
+    if( HallWin.GetNext() )
+        HallWin.show();
+    else
+        return 0;
+
+    return app.exec();
 }

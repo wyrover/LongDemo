@@ -15,8 +15,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public:
+    bool GetNext();
+
 private:
     Ui::MainWindow *ui;
+
+private:
+    bool bNext;
 };
 
 #endif // MAINWINDOW_H

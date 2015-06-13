@@ -13,11 +13,19 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    logindialog.cpp \
+    regdlg.cpp \
+    sysfun.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    logindialog.h \
+    regdlg.h \
+    sysfun.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    logindialog.ui \
+    regdlg.ui
 
 CONFIG += C++11
 
