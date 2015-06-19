@@ -1,4 +1,4 @@
-#include "logindialog.h"
+﻿#include "logindialog.h"
 #include "ui_logindialog.h"
 
 #include "regdlg.h"
@@ -30,14 +30,14 @@ void LoginDialog::on_loginbutton_clicked()
 void LoginDialog::on_Username_editingFinished()
 {
     QString strName = ui->Username->text();
-    ui->nikeerror->setText(tr(""));
+    ui->nikeerror->setText("");
     if( strName.isEmpty() )
     {
-        ui->nikeerror->setText(tr("请输入注册的手机号"));
+        ui->nikeerror->setText("请输入注册的手机号");
     }
     else if( strName.length() != 11)
     {
-       ui->nikeerror->setText(tr("手机号输入错误"));
+       ui->nikeerror->setText("手机号输入错误");
     }
 
 }

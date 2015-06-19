@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     logindialog.cpp \
     regdlg.cpp \
-    sysfun.cpp
+    sysfun.cpp \
+    ../ProtocolLogic/Socket.cpp
 
 HEADERS  += mainwindow.h \
     logindialog.h \
     regdlg.h \
-    sysfun.h
+    sysfun.h \
+    ../ProtocolLogic/Socket.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \

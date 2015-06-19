@@ -1,4 +1,4 @@
-#ifndef SYSFUN_H
+﻿#ifndef SYSFUN_H
 #define SYSFUN_H
 
 #include <qstring.h>
