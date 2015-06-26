@@ -8,7 +8,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
-    this->setWindowTitle(QStringLiteral("登录"));
+    this->setWindowTitle("登录");
 }
 
 LoginDialog::~LoginDialog()

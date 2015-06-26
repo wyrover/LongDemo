@@ -8,7 +8,7 @@ RegDlg::RegDlg(QWidget *parent) :
     ui(new Ui::RegDlg)
 {
     ui->setupUi(this);
-    this->setWindowTitle(QStringLiteral("注册"));
+    this->setWindowTitle("注册");
 }
 
 RegDlg::~RegDlg()

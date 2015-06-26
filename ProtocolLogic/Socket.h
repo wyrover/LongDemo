@@ -14,6 +14,7 @@
 #include <sys/syscall.h>
 #include <fcntl.h>
 #include <netinet/tcp.h>
+#include <string.h>
 
 #ifndef INVALID_SOCKET
 #define INVALID_SOCKET  (SOCKET)(~0)

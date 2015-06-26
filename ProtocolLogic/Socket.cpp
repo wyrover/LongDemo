@@ -41,7 +41,7 @@ bool Socket::Init()
     }
 #else
     int nFlags = fcntl( m_uSocket, F_GETFL, 0 );
-    int nRet = fcntl( m_uSocket, F_SETFL, nFlags | O_ONOBLOCK );
+    int nRet = fcntl( m_uSocket, F_SETFL, nFlags | O_NONBLOCK );
     if( nRet == SOCKET_ERROR )
     {
         Close();
@@ -75,8 +75,8 @@ int Socket::Connect(const char *lpHost, int nPort)
     memset( &SockAddr,0,sizeof(SockAddr) );
 
     SockAddr.sin_family = AF_INET;
-    SockAddr.sin_addr.S_un.S_addr = ::inet_addr(lpHost);
-    if( SockAddr.sin_addr.S_un.S_addr == INADDR_NONE )
+    SockAddr.sin_addr.s_addr = ::inet_addr(lpHost);
+    if( SockAddr.sin_addr.s_addr == INADDR_NONE )
     {
         return false;
     }

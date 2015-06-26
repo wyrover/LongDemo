@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTcpSocket>
-
 
 namespace Ui {
 class MainWindow;
@@ -27,13 +25,9 @@ private:
 
 private slots:
     void OnUpdate();
-    void readMessage();
-
-    void sendMessage();
 
 private:
     bool bNext;
-    QTcpSocket* m_tcpSocket;
 };
 
 #endif // MAINWINDOW_H
