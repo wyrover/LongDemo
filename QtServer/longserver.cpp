@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <QByteArray>
+#include <QString>
 
 LongServer::LongServer(QObject *parent) : QObject(parent)
 {
@@ -16,14 +17,14 @@ void LongServer::start()
         return;
     }
 
-    connect( m_tcpServer, SIGNAL(newConnection()), this, SLOT(newConnect()) );
+    connect(m_tcpServer,&QTcpServer::newConnection,this,&LongServer::newConnect);
 }
 
 void LongServer::newConnect()
 {
     //得到每个连进来的socket
     m_pTcpSocket = m_tcpServer->nextPendingConnection();
-    connect(m_pTcpSocket,SIGNAL(readyRead()),this,SLOT(readMessage()));
+    connect( m_pTcpSocket,&QTcpSocket::readyRead,this,&LongServer::readMessage );
 }
 
 void LongServer::readMessage()
@@ -31,4 +32,11 @@ void LongServer::readMessage()
     //读取信息
     QByteArray tBuffer = m_pTcpSocket->readAll();
     qDebug() << tBuffer;
+    sendMessage();
+}
+
+void LongServer::sendMessage()
+{
+    QString ss = "hello Client";
+    m_pTcpSocket->write(ss.toStdString().c_str(), strlen(ss.toStdString().c_str()));
 }

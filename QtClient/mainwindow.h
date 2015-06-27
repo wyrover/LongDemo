@@ -25,11 +25,13 @@ public:
 private:
     Ui::MainWindow *ui;
 
-private slots:
-    void OnUpdate();
+public slots:
     void readMessage();
 
     void sendMessage();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     bool bNext;

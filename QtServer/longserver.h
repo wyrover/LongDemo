@@ -1,9 +1,10 @@
-#ifndef LONGSERVER_H
+﻿#ifndef LONGSERVER_H
 #define LONGSERVER_H
 #include <QObject>
 
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QDebug>
 
 class LongServer : public QObject
 {
@@ -22,6 +23,8 @@ public slots:
 
     //读数据
     void readMessage();
+
+    void sendMessage();
 
 private:
     QTcpServer *m_tcpServer;

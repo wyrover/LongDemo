@@ -9,6 +9,8 @@ LoginDialog::LoginDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle(QStringLiteral("登录"));
+
+    //connect(this,&LoginDialog::on_regbutton_clicked,);
 }
 
 LoginDialog::~LoginDialog()
@@ -24,6 +26,8 @@ void LoginDialog::on_regbutton_clicked()
 
 void LoginDialog::on_loginbutton_clicked()
 {
+    //MainWindow minawindow;
+    //connect( this, &QPushButton::clicked, &minawindow, &MainWindow::sendMessage );
     accept();
 }
 

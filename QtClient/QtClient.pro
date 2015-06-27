@@ -21,7 +21,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     logindialog.h \
     regdlg.h \
-    sysfun.h
+    sysfun.h \
+    protocol.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \
