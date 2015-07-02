@@ -2,6 +2,7 @@
 #include "ui_regdlg.h"
 
 #include "sysfun.h"
+#include "protocol.h"
 
 RegDlg::RegDlg(QWidget *parent) :
     QDialog(parent),
@@ -22,15 +23,15 @@ void RegDlg::on_MobileNum_editingFinished()
     ui->phnumerr->setText("");
     if( strNumber.isEmpty() )
     {
-        ui->phnumerr->setText("请输入手机号");
+        ui->phnumerr->setText(QStringLiteral("请输入手机号"));
     }
     else if( !SysFun::isDigitStr(strNumber) )
     {
-        ui->phnumerr->setText("请输入正确的手机号");
+        ui->phnumerr->setText(QStringLiteral("请输入正确的手机号"));
     }
     else if( strNumber.count() != 11 )
     {
-        ui->phnumerr->setText("请输入完整的手机号");
+        ui->phnumerr->setText(QStringLiteral("请输入完整的手机号"));
     }
 }
 
@@ -40,11 +41,11 @@ void RegDlg::on_Password_editingFinished()
     ui->pwderror->setText("");
     if (strPwd.isEmpty() )
     {
-        ui->pwderror->setText("请输入密码");
+        ui->pwderror->setText(QStringLiteral("请输入密码"));
     }
     else if( strPwd.count() < 6 )
     {
-        ui->pwderror->setText("密码过于简单");
+        ui->pwderror->setText(QStringLiteral("密码过于简单"));
     }
 }
 
@@ -55,15 +56,19 @@ void RegDlg::on_SurePWD_editingFinished()
     ui->pwdsureerr->setText("");
     if( strSurepwd.isEmpty() )
     {
-        ui->pwdsureerr->setText("请确认你的密码");
+        ui->pwdsureerr->setText(QStringLiteral("请确认你的密码"));
     }
     else if( strPwd != strSurepwd )
     {
-        ui->pwdsureerr->setText("请输入相同的密码");
+        ui->pwdsureerr->setText(QStringLiteral("请输入相同的密码"));
     }
 }
 
 void RegDlg::on_RegOKButton_clicked()
 {
-
+    QString strPhoneNum = ui->MobileNum->text();
+    QString strPwd = ui->SurePWD->text();
+    //XYID#moblienum#password
+    QString msg = QString("%1#%2#%3").arg(QString::number( GL_XYID::GLXY_REGISTER )).arg(strPhoneNum).arg(strPwd);
+    SendReg(msg);
 }

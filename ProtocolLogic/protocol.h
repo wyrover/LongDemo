@@ -11,6 +11,8 @@ enum GL_XYID
 
     GLXY_TEST,   //测试
 
+    GLXY_REGISTER, //
+
 };
 
 //协议:测试

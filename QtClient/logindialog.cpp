@@ -2,15 +2,15 @@
 #include "ui_logindialog.h"
 
 #include "regdlg.h"
+#include "mainwindow.h"
 
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog)
 {
+    m_sParent = parent;
     ui->setupUi(this);
     this->setWindowTitle(QStringLiteral("登录"));
-
-    //connect(this,&LoginDialog::on_regbutton_clicked,);
 }
 
 LoginDialog::~LoginDialog()
@@ -21,13 +21,13 @@ LoginDialog::~LoginDialog()
 void LoginDialog::on_regbutton_clicked()
 {
     RegDlg regdlg;
+    connect( &regdlg, &RegDlg::SendReg, this, &LoginDialog::ReadReg);
     regdlg.exec();
 }
 
 void LoginDialog::on_loginbutton_clicked()
 {
-    //MainWindow minawindow;
-    //connect( this, &QPushButton::clicked, &minawindow, &MainWindow::sendMessage );
+    SendLogin("kkdkkdk");
     accept();
 }
 
@@ -37,11 +37,18 @@ void LoginDialog::on_Username_editingFinished()
     ui->nikeerror->setText("");
     if( strName.isEmpty() )
     {
-        ui->nikeerror->setText("请输入注册的手机号");
+        ui->nikeerror->setText(QStringLiteral("请输入注册的手机号"));
     }
     else if( strName.length() != 11)
     {
-       ui->nikeerror->setText("手机号输入错误");
+       ui->nikeerror->setText(QStringLiteral("手机号输入错误"));
     }
 
 }
+
+
+void LoginDialog::ReadReg( const QString& msg )
+{
+    SendReg(msg);
+}
+

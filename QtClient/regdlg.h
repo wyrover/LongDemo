@@ -2,6 +2,7 @@
 #define REGDLG_H
 
 #include <QDialog>
+#include <QString>
 
 namespace Ui {
 class RegDlg;
@@ -14,6 +15,9 @@ class RegDlg : public QDialog
 public:
     explicit RegDlg(QWidget *parent = 0);
     ~RegDlg();
+
+signals:
+    void SendReg( const QString& msg );
 
 private slots:
     void on_MobileNum_editingFinished();

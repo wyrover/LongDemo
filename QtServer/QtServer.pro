@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core network
+QT       += core network sql
 
 QT       -= gui
 
@@ -19,6 +19,7 @@ SOURCES += main.cpp \
     longserver.cpp
 
 HEADERS += \
-    longserver.h
+    longserver.h \
+    ../ProtocolLogic/protocol.h
 
 CONFIG += C++11

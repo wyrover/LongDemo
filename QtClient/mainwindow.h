@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTcpSocket>
+#include <QString>
 
 
 namespace Ui {
@@ -28,7 +29,9 @@ private:
 public slots:
     void readMessage();
 
-    void sendMessage();
+    void sendMessage(const QString& msg);
+
+    //void sendRegmsg( const QString& msg );
 
 private slots:
     void on_pushButton_clicked();

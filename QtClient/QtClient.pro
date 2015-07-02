@@ -22,7 +22,7 @@ HEADERS  += mainwindow.h \
     logindialog.h \
     regdlg.h \
     sysfun.h \
-    protocol.h
+    ../ProtocolLogic/protocol.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \

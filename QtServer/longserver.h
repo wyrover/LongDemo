@@ -5,6 +5,8 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlDriver>
 
 class LongServer : public QObject
 {

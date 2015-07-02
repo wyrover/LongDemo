@@ -2,6 +2,7 @@
 #define LOGINDIALOG_H
 
 #include <QDialog>
+#include <QString>
 
 namespace Ui {
 class LoginDialog;
@@ -15,6 +16,14 @@ public:
     explicit LoginDialog(QWidget *parent = 0);
     ~LoginDialog();
 
+signals:
+    void SendLogin( const QString& msg );
+    void SendReg( const QString& msg );
+
+public slots:
+    void ReadReg( const QString& msg );
+
+
 private slots:
     void on_regbutton_clicked();
 
@@ -24,6 +33,8 @@ private slots:
 
 private:
     Ui::LoginDialog *ui;
+
+    QWidget* m_sParent;
 };
 
 #endif // LOGINDIALOG_H
