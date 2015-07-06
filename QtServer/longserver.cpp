@@ -32,7 +32,7 @@ void LongServer::readMessage()
 {
     //读取信息
     QByteArray tBuffer = m_pTcpSocket->readAll();
-    ()qDebug << tBuffer;
+    qDebug() << tBuffer;
     sendMessage();
 }
 

@@ -5,6 +5,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <QtSql>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlDriver>
 
