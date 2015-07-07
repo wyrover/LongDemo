@@ -4,10 +4,20 @@
 #include <QByteArray>
 #include <QString>
 #include "../ProtocolLogic/protocol.h"
+#include "../ProtocolLogic/sysfun.h"
 
 LongServer::LongServer(QObject *parent) : QObject(parent)
 {
     m_tcpServer = new QTcpServer(this);
+    m_dDatabase = QSqlDatabase::addDatabase("QMYSQL");
+    m_dDatabase.setHostName("127.0.0.1");
+    m_dDatabase.setDatabaseName("ddd");
+    m_dDatabase.setUserName("root");
+    m_dDatabase.setPassword("Soft_1202");
+    if( !m_dDatabase.open() )
+    {
+        m_dDatabase.close();
+    }
 }
 
 void LongServer::start()
@@ -33,6 +43,8 @@ void LongServer::readMessage()
     //读取信息
     QByteArray tBuffer = m_pTcpSocket->readAll();
     qDebug() << tBuffer;
+    QString data = QString(tBuffer);
+    SysFun::AnalysisData( data );
     sendMessage();
 }
 
@@ -40,4 +52,9 @@ void LongServer::sendMessage()
 {
     QString ss = "hello Client";
     m_pTcpSocket->write(ss.toStdString().c_str(), strlen(ss.toStdString().c_str()));
+}
+
+void LongServer::OperateDataBase()
+{
+
 }

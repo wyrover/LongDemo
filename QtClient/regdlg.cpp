@@ -1,7 +1,7 @@
 ﻿#include "regdlg.h"
 #include "ui_regdlg.h"
 
-#include "sysfun.h"
+#include "../ProtocolLogic/sysfun.h"
 #include "../ProtocolLogic/protocol.h"
 
 RegDlg::RegDlg(QWidget *parent) :

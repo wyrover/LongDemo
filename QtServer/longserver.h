@@ -8,6 +8,7 @@
 #include <QtSql>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlDriver>
+#include <QString>
 
 class LongServer : public QObject
 {
@@ -29,9 +30,15 @@ public slots:
 
     void sendMessage();
 
+    //功能函数
+public:
+    //数据库存储
+    void OperateDataBase();
+
 private:
     QTcpServer *m_tcpServer;
     QTcpSocket *m_pTcpSocket;
+    QSqlDatabase m_dDatabase;
 };
 
 #endif // LONGSERVER_H

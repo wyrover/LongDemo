@@ -1,4 +1,5 @@
 ﻿#include "sysfun.h"
+#include <QDebug>
 
 
 SysFun::SysFun()
@@ -24,4 +25,11 @@ bool SysFun::isDigitStr(QString src)
         //是纯数字
         return true;
     }
+}
+
+void SysFun::AnalysisData(const QString &data)
+{
+    QString data1 = "11282#123112536#a135246#1";
+    QStringList strlist = data1.split("#");
+    qDebug() << strlist;
 }

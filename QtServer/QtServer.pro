@@ -16,10 +16,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    longserver.cpp
+    longserver.cpp \
+    ../ProtocolLogic/sysfun.cpp
 
 HEADERS += \
     longserver.h \
-    ../ProtocolLogic/protocol.h
+    ../ProtocolLogic/protocol.h \
+    ../ProtocolLogic/sysfun.h
 
 CONFIG += C++11
