@@ -1,7 +1,7 @@
 ﻿#include "regdlg.h"
 #include "ui_regdlg.h"
 
-#include "../ProtocolLogic/sysfun.h"
+#include "../ProtocolLogic/SysFunction.h"
 #include "../ProtocolLogic/protocol.h"
 
 RegDlg::RegDlg(QWidget *parent) :
@@ -25,7 +25,7 @@ void RegDlg::on_MobileNum_editingFinished()
     {
         ui->phnumerr->setText(QStringLiteral("请输入手机号"));
     }
-    else if( !SysFun::isDigitStr(strNumber) )
+    else if( !SysFunction::IsDigitStr(strNumber.toStdString()) )
     {
         ui->phnumerr->setText(QStringLiteral("请输入正确的手机号"));
     }

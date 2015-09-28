@@ -1,6 +1,13 @@
 #include "mainwindow.h"
 #include <QApplication>
 
+#ifdef _WIN32
+    #include <winsock2.h>
+#else
+    #include <sys/socket.h>
+    #include <arpa/inet.h>
+#endif
+
 
 int main(int argc, char *argv[])
 {
