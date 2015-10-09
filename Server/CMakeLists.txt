@@ -7,6 +7,13 @@ cmake_minimum_required(VERSION 2.8)
 #设置C++11支持
 add_definitions(-std=c++11)
 
+#设置调试
+set( CMAKE_BUILD_TYPE Debug )
+
+#设置debug和release的编译参数
+message(“The Debug Flag: ${CMAKE_CXX_FLAGS_DEBUG}”)
+message(“The Release Flag: ${CMAKE_CXX_FLAGS_RELEASE}”)
+
 # 添加 math 子目录
 add_subdirectory(src)
 
