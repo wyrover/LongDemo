@@ -1,2 +1,0 @@
-D:/msys64/home/wuxiangwei/LongDemo/Server-build/CMakeFiles/Server.dir
-D:/msys64/home/wuxiangwei/LongDemo/Server-build/src/CMakeFiles/SysFunction.dir

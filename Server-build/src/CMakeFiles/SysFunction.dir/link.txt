@@ -1,2 +1,0 @@
-D:\msys64\mingw64\bin\ar.exe cq libSysFunction.a  CMakeFiles/SysFunction.dir/SysFunction.cpp.obj
-D:\msys64\mingw64\bin\ranlib.exe libSysFunction.a
