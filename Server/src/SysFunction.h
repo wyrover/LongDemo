@@ -12,6 +12,9 @@ private:
 public:
     // 功能描述:  写Log
     static void PrintLog(const char* lpszLog);
+
+    template<class T>
+    const T& add(const T&a, const T&b);
 };
 
 #endif
