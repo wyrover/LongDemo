@@ -22,7 +22,9 @@ add_subdirectory(src)
 #add_subdirectory(../ProtocolLogic)
 
 #添加链接库
+if(WIN32)
 LINK_LIBRARIES( wsock32 )
+endif(WIN32)
 
 # 查找当前目录下的所有源文件
 # 并将名称保存到 DIR_SRCS 变量
