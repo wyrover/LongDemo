@@ -1,19 +1,10 @@
 import QtQuick 2.5
+import QtQuick.Window 2.0
 
 Rectangle {
-    property alias mouseArea: mouseArea
 
-    width: 360
-    height: 360
+    width: 500
+    height: 500
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-    }
-
-    Text {
-        anchors.centerIn: parent
-        text: "Hello World"
-    }
 }
 
