@@ -6,7 +6,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     ../ProtocolLogic/Socket.cpp \
     ../ProtocolLogic/SysFunction.cpp \
-    login_gui.cpp
+    login_gui.cpp \
+    cglobaldata.cpp
 
 RESOURCES += qml.qrc
 
@@ -21,5 +22,35 @@ win32: LIBS += -lwsock32
 HEADERS += \
     ../ProtocolLogic/Socket.h \
     ../ProtocolLogic/SysFunction.h \
-    login_gui.h
+    login_gui.h \
+    ../ProtocolLogic/rapidjson/allocators.h \
+    ../ProtocolLogic/rapidjson/document.h \
+    ../ProtocolLogic/rapidjson/encodedstream.h \
+    ../ProtocolLogic/rapidjson/encodings.h \
+    ../ProtocolLogic/rapidjson/filereadstream.h \
+    ../ProtocolLogic/rapidjson/filewritestream.h \
+    ../ProtocolLogic/rapidjson/memorybuffer.h \
+    ../ProtocolLogic/rapidjson/memorystream.h \
+    ../ProtocolLogic/rapidjson/pointer.h \
+    ../ProtocolLogic/rapidjson/prettywriter.h \
+    ../ProtocolLogic/rapidjson/rapidjson.h \
+    ../ProtocolLogic/rapidjson/reader.h \
+    ../ProtocolLogic/rapidjson/stringbuffer.h \
+    ../ProtocolLogic/rapidjson/writer.h \
+    ../ProtocolLogic/rapidjson/error/en.h \
+    ../ProtocolLogic/rapidjson/error/error.h \
+    ../ProtocolLogic/rapidjson/internal/biginteger.h \
+    ../ProtocolLogic/rapidjson/internal/diyfp.h \
+    ../ProtocolLogic/rapidjson/internal/dtoa.h \
+    ../ProtocolLogic/rapidjson/internal/ieee754.h \
+    ../ProtocolLogic/rapidjson/internal/itoa.h \
+    ../ProtocolLogic/rapidjson/internal/meta.h \
+    ../ProtocolLogic/rapidjson/internal/pow10.h \
+    ../ProtocolLogic/rapidjson/internal/stack.h \
+    ../ProtocolLogic/rapidjson/internal/strfunc.h \
+    ../ProtocolLogic/rapidjson/internal/strtod.h \
+    ../ProtocolLogic/rapidjson/internal/swap.h \
+    ../ProtocolLogic/rapidjson/msinttypes/inttypes.h \
+    ../ProtocolLogic/rapidjson/msinttypes/stdint.h \
+    cglobaldata.h
 

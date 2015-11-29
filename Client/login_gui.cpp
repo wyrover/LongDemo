@@ -1,8 +1,10 @@
 #include "login_gui.h"
+#include <iostream>
 
 Login_Gui::Login_Gui(QObject *parent) : QObject(parent)
 {
-
+    _strUserid = "";
+    _strPassword = "";
 }
 
 Login_Gui::~Login_Gui()
@@ -17,19 +19,19 @@ void Login_Gui::OnLogin()
 
 void Login_Gui::OnRegister()
 {
-
+    std::cout << "register" << std::endl;
 }
 
-QString Login_Gui::get_user_id()
+QString Login_Gui::userID()
 {
-    return m_strUserid;
+    return _strUserid;
 }
 
-void Login_Gui::set_user_id(QString user_id)
+void Login_Gui::setUserID(const QString& str)
 {
-    if( m_strUserid != user_id )
+    if(_strUserid != str)
     {
-        m_strUserid = user_id;
-        emit sig_user_id_changed();
+        _strUserid = str;
+        emit userIDChanged();
     }
 }

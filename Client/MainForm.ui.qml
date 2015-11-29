@@ -27,6 +27,8 @@ Rectangle {
         maximumLength: 32
     }
 
+
+
     CheckBox {
         id: reb_pwd
         x: 76
