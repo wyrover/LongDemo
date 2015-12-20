@@ -29,7 +29,7 @@ Rectangle {
         width: 180
         height: 30
         placeholderText: qsTr("请输入您的用户名")
-        text: login_gui.user_id
+        //text: login_gui.user_id
     }
 
     Text {
@@ -49,16 +49,16 @@ Rectangle {
         height: 30
         placeholderText: qsTr("请输入您的密码")
         maximumLength: 32
-        text: login_gui.password
         echoMode: 2
+        text: login_gui.password   
     }
 
     CheckBox {
-        id: reb_pwd
+        id: remember_pwd
         x: 76
         y: 220
         text: qsTr("记住密码")
-        checked: login_gui.flag_rememberpwd
+        checked: login_gui.bAutoLogon
     }
 
     CheckBox {
@@ -66,7 +66,7 @@ Rectangle {
         x: 240
         y: 220
         text: qsTr("自动登录")
-        checked: login_gui.flag_autologon
+        //checked: login_gui.flag_autologon
     }
 
     Button {
@@ -78,7 +78,7 @@ Rectangle {
         text: qsTr("注  册")
         onClicked:
         {
-            new login_gui.OnRegister();
+            //login_gui.OnRegister();
             console.log("注册");
         }
     }
@@ -90,7 +90,7 @@ Rectangle {
         width: 200
         height: 50
         text: qsTr("登   录")
-        onClicked: new login_gui.OnLogin()
+        onClicked: login_req()
     }
 
     Button {
@@ -105,7 +105,7 @@ Rectangle {
     MessageDialog {
         id: msgBox
         width: 200
-        height: 80
+        height: 100
 
         title: qsTr("提示")
 /*
@@ -113,6 +113,35 @@ Rectangle {
             msgBox.text = strmsg
             msgBox.open()
         }*/
+    }
+
+    //登录请求
+    function login_req()
+    {
+        if(userid_edit.text == "")
+        {
+            msgBox.text = qsTr("请输入用户名");
+            msgBox.open();
+            return;
+        }
+        if(password_edit.text == "")
+        {
+            msgBox.text = qsTr("请输入密码");
+            msgBox.open();
+            return;
+        }
+        else if(password_edit.text.length < 6 || password_edit.text.length > 20)
+        {
+            msgBox.text = qsTr("密码建议6~20个字符");
+            msgBox.open();
+            return;
+        }
+
+        login_gui.userID = userid_edit.text;
+        login_gui.password = password_edit.text;
+        login_gui.flagRebPwd = remember_pwd.checked;
+        login_gui.bAutoLogon = auto_login.checked;
+        login_gui.OnLogin();
     }
 
     //Login_Gui.m_strUserid = userid_edit.text

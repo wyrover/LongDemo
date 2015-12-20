@@ -31,14 +31,14 @@ class Socket
 {
 public:
 	Socket();
-	~Socket();
+    ~Socket();
 
 public:
-	virtual bool Init();
-	virtual bool Close();
-    virtual int Connect( const char* lpHost, int nPort );
-    virtual int Send(const char* lpBuffer, int nBufLenght, int nFlags = 0);
-    virtual int Recv( char* lpBuffer, int nBufLenght, int nFlags = 0 );
+    bool Init();
+    bool Close();
+    int Connect( const char* lpHost, int nPort );
+    int Send(const char* lpBuffer, int nBufLenght, int nFlags = 0);
+    int Recv( char* lpBuffer, int nBufLenght, int nFlags = 0 );
 	
 private:
 	SOCKET m_uSocket;

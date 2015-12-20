@@ -4,10 +4,12 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    ../ProtocolLogic/Socket.cpp \
-    ../ProtocolLogic/SysFunction.cpp \
+    cglobaldata.cpp \
     login_gui.cpp \
-    cglobaldata.cpp
+    socketthread.cpp \
+    ../ProtocolLogic/Logplus.cpp \
+    ../ProtocolLogic/Socket.cpp \
+    ../ProtocolLogic/SysFunction.cpp
 
 RESOURCES += qml.qrc
 
@@ -17,12 +19,14 @@ QML_IMPORT_PATH =
 # Default rules for deployment.
 include(deployment.pri)
 
-win32: LIBS += -lwsock32
-
 HEADERS += \
+    cglobaldata.h \
+    login_gui.h \
+    socketthread.h \
+    ../ProtocolLogic/Logplus.h \
+    ../ProtocolLogic/protocol.h \
     ../ProtocolLogic/Socket.h \
     ../ProtocolLogic/SysFunction.h \
-    login_gui.h \
     ../ProtocolLogic/rapidjson/allocators.h \
     ../ProtocolLogic/rapidjson/document.h \
     ../ProtocolLogic/rapidjson/encodedstream.h \
@@ -51,6 +55,5 @@ HEADERS += \
     ../ProtocolLogic/rapidjson/internal/strtod.h \
     ../ProtocolLogic/rapidjson/internal/swap.h \
     ../ProtocolLogic/rapidjson/msinttypes/inttypes.h \
-    ../ProtocolLogic/rapidjson/msinttypes/stdint.h \
-    cglobaldata.h
+    ../ProtocolLogic/rapidjson/msinttypes/stdint.h
 

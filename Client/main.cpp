@@ -1,8 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
-#include "login_gui.h"
 
+#include "login_gui.h"
 #include "cglobaldata.h"
 
 int main(int argc, char *argv[])
@@ -19,4 +19,3 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
-
