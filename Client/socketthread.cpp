@@ -16,5 +16,5 @@ SocketThread::~SocketThread()
 
 void SocketThread::run()
 {
-    _tcpSocket = new Socket();
+    _tcpSocket = new Ld_Socket();
 }

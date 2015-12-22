@@ -5,7 +5,8 @@
 #include <string.h>
 
 #ifdef _WIN32
-    #include <windows.h>
+#include <winsock2.h>
+//#include <windows.h>
 #else
     #include <sys/types.h>
     #include <sys/socket.h>
@@ -22,7 +23,24 @@ int main()
 #ifdef _WIN32
     //初始化 DLL
     WSADATA wsaData;
-    WSAStartup( MAKEWORD(2, 2), &wsaData);
+
+    WORD wVersion = MAKEWORD(2, 2);
+    int nError = WSAStartup(wVersion, &wsaData);
+    if(nError != 0)
+    {
+        std::cout << "WSAStartup failed with error: " << nError << std::endl;
+        return -1;
+    }
+    if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2)
+    {
+        /* Tell the user that we could not find a usable */
+        /* WinSock DLL.                                  */
+        std::cout << "Could not find a usable version of Winsock.dll" << std::endl;
+        WSACleanup();
+        return -1;
+    }
+    else
+        std::cout << "The Winsock 2.2 dll was found okay" << std::endl;
 #endif
     struct sockaddr_in server_addr;
     memset(&server_addr,0,sizeof(server_addr));

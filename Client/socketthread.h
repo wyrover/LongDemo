@@ -2,7 +2,7 @@
 #define SOCKETTHREAD_H
 #include <QThread>
 
-#include "../ProtocolLogic/Socket.h"
+#include "../ProtocolLogic/Ld_Socket.h"
 
 class SocketThread : public QThread
 {
@@ -15,7 +15,7 @@ protected:
     void run();
 
 private:
-    Socket* _tcpSocket;
+    Ld_Socket* _tcpSocket;
 };
 
 #endif // SOCKETTHREAD_H

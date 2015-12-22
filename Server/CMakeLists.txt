@@ -23,7 +23,7 @@ add_subdirectory(src)
 
 #添加链接库
 if(WIN32)
-LINK_LIBRARIES( wsock32 )
+    LINK_LIBRARIES( wsock32 )
 endif(WIN32)
 
 # 查找当前目录下的所有源文件

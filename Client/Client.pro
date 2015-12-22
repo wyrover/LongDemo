@@ -8,8 +8,8 @@ SOURCES += main.cpp \
     login_gui.cpp \
     socketthread.cpp \
     ../ProtocolLogic/Logplus.cpp \
-    ../ProtocolLogic/Socket.cpp \
-    ../ProtocolLogic/SysFunction.cpp
+    ../ProtocolLogic/SysFunction.cpp \
+    ../ProtocolLogic/Ld_Socket.cpp
 
 RESOURCES += qml.qrc
 
@@ -25,7 +25,6 @@ HEADERS += \
     socketthread.h \
     ../ProtocolLogic/Logplus.h \
     ../ProtocolLogic/protocol.h \
-    ../ProtocolLogic/Socket.h \
     ../ProtocolLogic/SysFunction.h \
     ../ProtocolLogic/rapidjson/allocators.h \
     ../ProtocolLogic/rapidjson/document.h \
@@ -55,5 +54,7 @@ HEADERS += \
     ../ProtocolLogic/rapidjson/internal/strtod.h \
     ../ProtocolLogic/rapidjson/internal/swap.h \
     ../ProtocolLogic/rapidjson/msinttypes/inttypes.h \
-    ../ProtocolLogic/rapidjson/msinttypes/stdint.h
+    ../ProtocolLogic/rapidjson/msinttypes/stdint.h \
+    ../ProtocolLogic/Ld_Socket.h
 
+win32:LIBS += libwsock32 libWs2_32

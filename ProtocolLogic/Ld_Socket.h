@@ -2,6 +2,7 @@
 #pragma once
 
 #ifdef _WIN32
+#include <winsock2.h>
 #include <windows.h>
 #else
 #include <unistd.h>
@@ -27,18 +28,22 @@ typedef unsigned int   SOCKET;
 #endif
 
 
-class Socket
+#include <iostream>
+#include <string>
+
+
+class Ld_Socket
 {
 public:
-	Socket();
-    ~Socket();
+    Ld_Socket();
+    ~Ld_Socket();
 
 public:
-    bool Init();
-    bool Close();
-    int Connect( const char* lpHost, int nPort );
-    int Send(const char* lpBuffer, int nBufLenght, int nFlags = 0);
-    int Recv( char* lpBuffer, int nBufLenght, int nFlags = 0 );
+    bool Socket_Init();
+    bool Socket_Close();
+    int Socket_Connect( const char* lpHost, int nPort );
+    int Socket_Send(const char* lpBuffer, int nBufLenght, int nFlags = 0);
+    int Socket_Recv( char* lpBuffer, int nBufLenght, int nFlags = 0 );
 	
 private:
 	SOCKET m_uSocket;

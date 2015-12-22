@@ -1,29 +1,46 @@
 ﻿
-#include "Socket.h"
+#include "Ld_Socket.h"
 
-Socket::Socket()
+Ld_Socket::Ld_Socket()
 : m_uSocket(INVALID_SOCKET)
 {
-#ifdef _WIN32
-	WSADATA wsaData;
-	WSAStartup(MAKEWORD(2,2), &wsaData);
-#endif
-
-	Init();
+    Socket_Init();
 }
 
-Socket::~Socket()
+Ld_Socket::~Ld_Socket()
 {
 #ifdef _WIN32
 	WSACleanup();
 #endif
 }
 
-bool Socket::Init()
+bool Ld_Socket::Socket_Init()
 {
+
+#ifdef _WIN32
+    WSADATA wsaData;
+    WORD wVersion = MAKEWORD(2, 2);
+    int nError = WSAStartup(wVersion, &wsaData);
+    if(nError != 0)
+    {
+        std::cout << "WSAStartup failed with error: " << nError << std::endl;
+        return false;
+    }
+    if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2)
+    {
+        /* Tell the user that we could not find a usable */
+        /* WinSock DLL.                                  */
+        std::cout << "Could not find a usable version of Winsock.dll" << std::endl;
+        WSACleanup();
+        return false;
+    }
+    else
+        std::cout << "The Winsock 2.2 dll was found okay" << std::endl;
+
+#endif
 	if( m_uSocket != INVALID_SOCKET )
 	{
-		Close();
+        Socket_Close();
 	}
     m_uSocket = socket(AF_INET,SOCK_STREAM, IPPROTO_TCP);
     if( m_uSocket == INVALID_SOCKET )
@@ -36,7 +53,7 @@ bool Socket::Init()
     int nRet = ioctlsocket( m_uSocket, FIONBIO, (unsigned long *)&flag );
     if( nRet == SOCKET_ERROR )
     {
-        Close();
+        Socket_Close();
         return false;
     }
 #else
@@ -44,14 +61,14 @@ bool Socket::Init()
     int nRet = fcntl( m_uSocket, F_SETFL, nFlags | O_NONBLOCK );
     if( nRet == SOCKET_ERROR )
     {
-        Close();
+        Socket_Close();
         return false;
     }
 #endif
     return true;
 }
 
-bool Socket::Close()
+bool Ld_Socket::Socket_Close()
 {
 	if( m_uSocket != INVALID_SOCKET )
 	{
@@ -65,7 +82,7 @@ bool Socket::Close()
 	return true;
 }
 
-int Socket::Connect(const char *lpHost, int nPort)
+int Ld_Socket::Socket_Connect(const char *lpHost, int nPort)
 {
 	if( lpHost == nullptr || nPort == 0 )
 	{
@@ -86,14 +103,14 @@ int Socket::Connect(const char *lpHost, int nPort)
     return ::connect(m_uSocket,(const sockaddr*)&SockAddr,sizeof(SockAddr));
 }
 
-int Socket::Send(const char *lpBuffer, int nBufLenght, int nFlags)
+int Ld_Socket::Socket_Send(const char *lpBuffer, int nBufLenght, int nFlags)
 {
     if( m_uSocket == INVALID_SOCKET )
         return 0;
     return ::send(m_uSocket,lpBuffer, nBufLenght, nFlags);
 }
 
-int Socket::Recv(char *lpBuffer, int nBufLenght, int nFlags)
+int Ld_Socket::Socket_Recv(char *lpBuffer, int nBufLenght, int nFlags)
 {
     if( m_uSocket == INVALID_SOCKET )
         return 0;
