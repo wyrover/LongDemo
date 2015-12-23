@@ -95,7 +95,15 @@ int Ld_Socket::Socket_Connect(const char *lpHost, int nPort)
     SockAddr.sin_addr.s_addr = ::inet_addr(lpHost);
     if( SockAddr.sin_addr.s_addr == INADDR_NONE )
     {
-        return false;
+        LPHOSTENT lphost = ::gethostbyname(lpHost);
+        if (lphost != NULL)
+        {
+            SockAddr.sin_addr.s_addr = ((LPIN_ADDR)lphost->h_addr)->s_addr;
+        }
+        else
+        {
+            return SOCKET_ERROR;
+        }
     }
 
     SockAddr.sin_port = htons(nPort);
