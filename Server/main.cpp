@@ -3,6 +3,7 @@
 #include "src/SysFunction.h"
 #include <stdlib.h>
 #include <string.h>
+#include <string>
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -14,7 +15,7 @@
     #include <netinet/in.h>
 #endif
 
-#define SERVER_PORT 666
+#define SERVER_PORT 6666
 #define BUFFER_SIZE 1024
 #define LISTEN_QUEUE 20
 
@@ -49,7 +50,7 @@ int main()
     server_addr.sin_port = htons(SERVER_PORT);
 
     //创建socket
-    int server_socket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+    SOCKET server_socket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     if (server_socket < 0 )
     {
         std::cout << "Creat Socket Fail..." << std::endl;
@@ -67,6 +68,7 @@ int main()
         std::cout << "Listen Socekt Fail..." << std::endl;
         exit(1);
     }
+
     while (1)
     {
         //client
@@ -78,18 +80,43 @@ int main()
 #endif
 
         //
-        int connt_socket = accept(server_socket,(struct sockaddr*)&client_addr,&length);
+        SOCKET connt_socket = accept(server_socket,(struct sockaddr*)&client_addr,&length);
         if (connt_socket < 0 )
         {
             std::cout << "Accept Socket Fail..." << std::endl;
             break;
         }
+
+        //接收客户端的数据
+        char _szBuffer[BUFFER_SIZE] = {0};
+        int recvCnt = recv(connt_socket, _szBuffer, BUFFER_SIZE, 0);
+        if(recvCnt > 0)
+        {
+            std::cout << _szBuffer << std::endl;
+        }
+
+        //向客户端发送数据
+        std::string str{"Hello World!---Server"};
+        send(connt_socket, str.c_str(), str.length(), 0);
+
+#ifdef _WIN32
+        closesocket(connt_socket);
+#else
+        close(connt_socket);
+#endif
+        //重置缓冲区
+        memset(_szBuffer, 0, BUFFER_SIZE);
     }
 
 #ifdef _WIN32
+    closesocket(server_socket);
+
     //终止 DLL 的使用
     WSACleanup();
+#else
+    close(server_socket);
 #endif
+
     return 0;
 }
 
