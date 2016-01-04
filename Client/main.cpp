@@ -10,9 +10,17 @@
 
 #ifdef Q_OS_WIN32
 #include <winsock2.h>
+#else
+#define SOCKET int
+#include <unistd.h>  //close
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
 #endif
 
 #define SERVER_PORT 6666
+#define BUFFER_SIZE 1024
 
 int main(int argc, char *argv[])
 {
@@ -70,8 +78,8 @@ int main(int argc, char *argv[])
         //exit(0);
     }
 
-    char _szBuffer[MAXBYTE] = {0};
-    if(recv(_clientSocket, _szBuffer, MAXBYTE, 0) == -1)
+    char _szBuffer[BUFFER_SIZE] = {0};
+    if(recv(_clientSocket, _szBuffer, BUFFER_SIZE, 0) == -1)
     {
        //perror("recv error");
        //exit(1);
@@ -84,7 +92,7 @@ int main(int argc, char *argv[])
     //终止使用 DLL
     WSACleanup();
 #else
-    closesocket(_clientSocket);
+    close(_clientSocket);
 #endif
 
 
